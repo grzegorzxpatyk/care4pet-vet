@@ -1,10 +1,14 @@
 import { fetchPatients } from '@/app/lib/data';
 import Button from '@/components/Button/Button';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Patients',
+};
 
 export default async function Page() {
   const patients = await fetchPatients();
-  console.log(patients);
 
   return (
     <div className='flex w-full select-none flex-col items-start justify-start gap-8'>

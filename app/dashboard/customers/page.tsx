@@ -1,6 +1,11 @@
 import { fetchCustomers } from '@/app/lib/data';
 import Button from '@/components/Button/Button';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Customers',
+};
 
 export default async function Page() {
   const customers = await fetchCustomers();
@@ -33,6 +38,11 @@ export default async function Page() {
           ))}
         </tbody>
       </table>
+      <Link href={'/dashboard/customers/create'}>
+        <Button variant={'ghost'} type='button'>
+          Create customer
+        </Button>
+      </Link>
     </div>
   );
 }
