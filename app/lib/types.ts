@@ -14,7 +14,7 @@ export enum Species {
   RABBIT = 'Rabbit',
 }
 
-export interface Pet {
+export interface IPet {
   id: UUID;
   name: string;
   age: number;
