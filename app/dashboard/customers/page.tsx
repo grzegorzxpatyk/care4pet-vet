@@ -28,7 +28,10 @@ export default async function Page() {
               <td>{customer.email}</td>
               <td>{customer.phonenumber}</td>
               <td className='w-20 rounded-e'>
-                <Link href={`/dashboard/customers/${customer.id}`} passHref>
+                <Link
+                  href={`/dashboard/customers/${customer.id}/edit`}
+                  passHref
+                >
                   <Button variant={'ghost'} size={'sm'}>
                     edit
                   </Button>
