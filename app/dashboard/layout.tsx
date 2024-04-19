@@ -1,4 +1,5 @@
 import AppLogo from '@/components/AppLogo/AppLogo';
+import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs';
 import Navigation from '@/components/Navigation/Navigation';
 import type { Metadata } from 'next';
 
@@ -17,7 +18,7 @@ export default function Layout({
         <AppLogo />
       </div>
       <div className='border-b border-zinc-600 p-8 text-2xl'>
-        Breadcrumbs go here
+        <Breadcrumbs />
       </div>
       <div className='border-r border-zinc-600 p-8'>
         <Navigation />
