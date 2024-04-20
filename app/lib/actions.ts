@@ -4,7 +4,15 @@ import { sql } from '@vercel/postgres';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
-import { Species } from './types';
+import { Customer, IPet, Species } from './types';
+import { createKysely } from '@vercel/postgres-kysely';
+
+interface Database {
+  pets: Omit<IPet, 'id'>;
+  customers: Customer;
+}
+
+const db = createKysely<Database>();
 
 const CustomerFormSchema = z.object({
   id: z.string(),
@@ -58,21 +66,17 @@ export async function createPatient(formData: FormData) {
       ownerId: formData.get('ownerId'),
     });
 
-  const rawFormData = Object.fromEntries(formData.entries());
-  console.log(rawFormData);
-
-  const isMicrochippedString = isMicrochipped ? 'true' : 'false';
-  const microchipNumberFormatted =
-    microchipNumber !== undefined ? microchipNumber : 'NULL';
-  console.log(`
-  INSERT INTO pets (name, age, species, ismicrochipped, microchipnumber, ownerid)
-  VALUES ('${name}', ${age}, '${species}', ${isMicrochippedString}, ${microchipNumberFormatted}, '${ownerId}');
-`);
-
-  await sql`
-    INSERT INTO pets (name, age, species, ismicrochipped, microchipnumber, ownerid)
-    VALUES ('${name}', ${age}, '${species}', ${isMicrochippedString}, ${microchipNumberFormatted}, '${ownerId}');
-  `;
+  await db
+    .insertInto('pets')
+    .values({
+      name: name,
+      age: age,
+      species: species,
+      ismicrochipped: isMicrochipped,
+      microchipnumber: microchipNumber,
+      ownerid: ownerId,
+    })
+    .execute();
 
   revalidatePath('/dashboard/patients');
   redirect('/dashboard/patients');

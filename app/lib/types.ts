@@ -19,9 +19,9 @@ export interface IPet {
   name: string;
   age: number;
   species: Species;
-  isMicrochipped: boolean;
-  microchipNumber?: number;
-  ownerId: UUID;
+  ismicrochipped: boolean;
+  microchipnumber?: number;
+  ownerid: string;
 }
 
 export type Veterinarian = {
