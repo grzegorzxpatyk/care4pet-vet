@@ -9,7 +9,7 @@ import { createKysely } from '@vercel/postgres-kysely';
 
 interface Database {
   pets: Omit<IPet, 'id'>;
-  customers: Customer;
+  customers: Omit<Customer, 'id'>;
 }
 
 const db = createKysely<Database>();
@@ -30,10 +30,14 @@ export async function createCustomer(formData: FormData) {
     phoneNumber: formData.get('phoneNumber'),
   });
 
-  await sql`
-  INSERT INTO customers (name, email, phoneNumber)
-  VALUES (${name}, ${email}, ${phoneNumber})
-  `;
+  await db
+    .insertInto('customers')
+    .values({
+      name: name,
+      email: email,
+      phonenumber: phoneNumber,
+    })
+    .execute();
 
   revalidatePath('/dashboard/customers');
   redirect('/dashboard/customers');

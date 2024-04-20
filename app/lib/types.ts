@@ -4,7 +4,7 @@ export type Customer = {
   id: UUID;
   name: string;
   email: string;
-  phoneNumber: string;
+  phonenumber: string;
 };
 
 export enum Species {
@@ -28,7 +28,7 @@ export type Veterinarian = {
   id: UUID;
   name: string;
   email: string;
-  phoneNumber: string;
+  phonenumber: string;
 };
 
 export type HistoryEntry = {
