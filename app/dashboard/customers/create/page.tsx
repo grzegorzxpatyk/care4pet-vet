@@ -1,4 +1,4 @@
-import createCustomer from '@/app/lib/actions';
+import { createCustomer } from '@/app/lib/actions';
 import Button from '@/components/Button/Button';
 import InputField from '@/components/InputField/InputField';
 import type { Metadata } from 'next';

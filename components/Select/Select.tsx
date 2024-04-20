@@ -9,16 +9,18 @@ import * as RadixSelect from '@radix-ui/react-select';
 
 export default function Select({
   name,
+  label,
   placeholder,
   values,
 }: {
   name: string;
+  label: string;
   placeholder: string;
   values: Array<{ label: string; value: string }>;
 }) {
   return (
     <div className='inline-flex w-full flex-row items-center justify-between gap-4'>
-      <label htmlFor={name}>{name}</label>
+      <label htmlFor={name}>{label}</label>
       <RadixSelect.Root name={name}>
         <RadixSelect.Trigger className='inline-flex w-full items-center justify-center gap-[5px] rounded bg-zinc-400 p-2 text-base leading-none shadow-[0_2px_10px] shadow-black/10 outline-none hover:bg-zinc-400 focus:shadow-[0_0_0_2px] focus:shadow-black data-[placeholder]:text-zinc-300 dark:bg-zinc-700 hover:dark:bg-zinc-600'>
           <RadixSelect.Value placeholder={placeholder} />

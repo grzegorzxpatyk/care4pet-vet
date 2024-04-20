@@ -13,6 +13,18 @@ export async function fetchCustomers() {
   }
 }
 
+export async function fetchCustomersSimple() {
+  noStore();
+  try {
+    const customersDataPromise = sql`SELECT id, name FROM customers`;
+    const data = await customersDataPromise;
+    return data.rows;
+  } catch (error) {
+    console.error(`Error occured while fetching customers data: ${error}`);
+    throw new Error('Failed to fetch customers data.');
+  }
+}
+
 export async function fetchPatients() {
   noStore();
   try {

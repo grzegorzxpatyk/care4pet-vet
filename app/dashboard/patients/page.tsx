@@ -40,6 +40,11 @@ export default async function Page() {
           ))}
         </tbody>
       </table>
+      <Link href={'/dashboard/patients/create'}>
+        <Button variant={'ghost'} type='button'>
+          Add patient
+        </Button>
+      </Link>
     </div>
   );
 }
