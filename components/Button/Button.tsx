@@ -16,19 +16,27 @@ const button = cva(
   {
     variants: {
       variant: {
-        primary: ['bg-zinc-900', 'text-zinc-200', 'hover:enabled:bg-zinc-800'],
-        secondary: [
-          'bg-zinc-300',
-          'text-zinc-900',
+        primary: [
+          'bg-zinc-900',
+          'text-zinc-200',
           'hover:enabled:bg-zinc-800',
-          'hover:enabled:text-zinc-200',
+          'dark:bg-zinc-100',
+          'dark:text-zinc-900',
+          'dark:hover:enabled:bg-zinc-300',
+        ],
+        secondary: [
+          'bg-zinc-100',
+          'dark:bg-zinc-900',
+          'text-zinc-900',
+          'dark:text-zinc-200',
+          'hover:enabled:bg-zinc-300',
+          'dark:hover:enabled:bg-zinc-800',
         ],
         ghost: [
           'border-none',
           'bg-transparent',
           'text-blue-700',
-          'hover:enabled:bg-blue-800/30',
-          'hover:enabled:text-blue-400',
+          'hover:enabled:bg-blue-800/20',
         ],
       },
       size: {
