@@ -5,8 +5,10 @@ interface InputFieldProps extends React.HTMLProps<HTMLInputElement> {
 
 export default function InputField({ name, label, ...props }: InputFieldProps) {
   return (
-    <div className='flex w-full flex-row items-center justify-between gap-4'>
-      <label htmlFor={name}>{label}</label>
+    <div className='flex w-full select-none flex-row items-center justify-between gap-4'>
+      <label htmlFor={name} className='select-none'>
+        {label}
+      </label>
       <input
         name={name}
         id={name}
