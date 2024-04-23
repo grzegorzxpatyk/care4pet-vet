@@ -10,16 +10,15 @@ export default function Breadcrumbs() {
   return (
     <div className='flex flex-row items-center justify-start gap-2'>
       {pathnameArray.map((element, i) => (
-        <>
+        <span key={element}>
           <Link
             href={`/${pathnameArray.slice(0, i + 1).join('/')}`}
-            key={element}
-            className='capitalize'
+            className='mr-2 capitalize'
           >
             {element}
           </Link>
           {i < pathnameArray.length - 1 && '>'}
-        </>
+        </span>
       ))}
     </div>
   );
