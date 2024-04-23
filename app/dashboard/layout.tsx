@@ -4,7 +4,10 @@ import Navigation from '@/components/Navigation/Navigation';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Dashboard',
+  title: {
+    default: 'Dashboard',
+    template: '%s | Dashboard',
+  },
 };
 
 export default function Layout({
