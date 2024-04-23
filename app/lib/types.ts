@@ -1,5 +1,12 @@
 type UUID = `${string}-${string}-${string}-${string}-${string}`;
 
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+};
+
 export type Customer = {
   id: UUID;
   name: string;
