@@ -3,7 +3,7 @@ import { unstable_noStore as noStore } from 'next/cache';
 import { Customer, IPet, UUID } from './types';
 
 interface Database {
-  pets: IPet;
+  patients: IPet;
   customers: Customer;
 }
 
@@ -53,16 +53,16 @@ export async function fetchPatients() {
   noStore();
   try {
     const patients = await db
-      .selectFrom('pets')
-      .innerJoin('customers as c', 'c.id', 'pets.ownerid')
+      .selectFrom('patients')
+      .innerJoin('customers as c', 'c.id', 'patients.ownerid')
       .select([
-        'pets.id',
-        'pets.name',
-        'pets.age',
-        'pets.species',
-        'pets.ismicrochipped',
-        'pets.microchipnumber',
-        'pets.ownerid',
+        'patients.id',
+        'patients.name',
+        'patients.age',
+        'patients.species',
+        'patients.ismicrochipped',
+        'patients.microchipnumber',
+        'patients.ownerid',
         'c.name as owner_name',
       ])
       .execute();
@@ -77,7 +77,7 @@ export async function fetchPatient(id: UUID) {
   noStore();
   try {
     const patient = await db
-      .selectFrom('pets')
+      .selectFrom('patients')
       .selectAll()
       .where('id', '=', id)
       .executeTakeFirstOrThrow();
@@ -92,7 +92,7 @@ export async function fetchPatientsByOwnerId(ownerId: UUID) {
   noStore();
   try {
     const patients = await db
-      .selectFrom('pets')
+      .selectFrom('patients')
       .select(['id', 'name', 'species'])
       .where('ownerid', '=', ownerId)
       .execute();

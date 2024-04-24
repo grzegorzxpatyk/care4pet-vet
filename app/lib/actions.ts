@@ -29,7 +29,7 @@ export async function authenticate(
 }
 
 interface Database {
-  pets: Omit<IPet, 'id'>;
+  patients: Omit<IPet, 'id'>;
   customers: Omit<Customer, 'id'>;
 }
 
@@ -92,7 +92,7 @@ export async function createPatient(formData: FormData) {
     });
 
   await db
-    .insertInto('pets')
+    .insertInto('patients')
     .values({
       name: name,
       age: age,
