@@ -19,6 +19,7 @@ export default async function Page() {
             <td>Species</td>
             <td>Age</td>
             <td>Owner</td>
+            <td className='w-20'></td>
             <td className='w-20 rounded-e'></td>
           </tr>
         </thead>
@@ -28,9 +29,16 @@ export default async function Page() {
               <td className='rounded-s p-2'>{patient.name}</td>
               <td>{patient.species}</td>
               <td>{patient.age}</td>
-              <td>{patient.ownername}</td>
-              <td className='w-20 rounded-e'>
+              <td>{patient.owner_name}</td>
+              <td className='w-20'>
                 <Link href={`/dashboard/patients/${patient.id}`} passHref>
+                  <Button variant={'ghost'} size={'sm'}>
+                    details
+                  </Button>
+                </Link>
+              </td>
+              <td className='w-20 rounded-e'>
+                <Link href={`/dashboard/patients/${patient.id}/edit`} passHref>
                   <Button variant={'ghost'} size={'sm'}>
                     edit
                   </Button>
