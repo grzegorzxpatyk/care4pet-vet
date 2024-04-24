@@ -1,5 +1,5 @@
 import { createPatient } from '@/app/lib/actions';
-import { fetchCustomersSimple } from '@/app/lib/data';
+import { fetchCustomersIdAndName } from '@/app/lib/data';
 import { Species } from '@/app/lib/types';
 import Button from '@/components/Button/Button';
 import InputField from '@/components/InputField/InputField';
@@ -15,7 +15,7 @@ export default async function Page() {
     label: element,
     value: `${element.slice(0, 1).toUpperCase()}${element.slice(1)}`,
   }));
-  const customers = await fetchCustomersSimple();
+  const customers = await fetchCustomersIdAndName();
   const customersFormatted = customers.map((element) => ({
     label: element.name,
     value: element.id,
