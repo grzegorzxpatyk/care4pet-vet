@@ -53,16 +53,16 @@ export async function fetchPatients() {
   noStore();
   try {
     const patients = await db
-      .selectFrom('patients')
-      .innerJoin('customers as c', 'c.id', 'patients.ownerid')
+      .selectFrom('patients as p')
+      .innerJoin('customers as c', 'c.id', 'p.ownerid')
       .select([
-        'patients.id',
-        'patients.name',
-        'patients.age',
-        'patients.species',
-        'patients.ismicrochipped',
-        'patients.microchipnumber',
-        'patients.ownerid',
+        'p.id',
+        'p.name',
+        'p.age',
+        'p.species',
+        'p.ismicrochipped',
+        'p.microchipnumber',
+        'p.ownerid',
         'c.name as owner_name',
       ])
       .execute();
