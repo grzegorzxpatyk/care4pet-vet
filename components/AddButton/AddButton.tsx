@@ -25,7 +25,7 @@ export default function AddButton() {
         onClick={handleClick}
         onBlur={handleBlur}
         className={clsx(
-          'group fixed bottom-8 right-8 h-16 w-16 min-w-16 gap-0 rounded-full bg-blue-600/10 text-2xl transition-all',
+          'fixed bottom-8 right-8 h-16 w-16 min-w-16 rounded-full bg-blue-600/10 text-2xl transition-shadow',
           isOpen
             ? 'shadow-[2rem_2rem_8rem_8rem] shadow-blue-500/30'
             : 'shadow-[2rem_2rem_0_0] shadow-blue-500/0'
@@ -35,12 +35,7 @@ export default function AddButton() {
           <PlusIcon />
         </span>
       </Button>
-      <div
-        className={clsx(
-          'h-[50dvh] w-[50dvw] transition-all duration-300',
-          isOpen ? 'block' : 'hidden'
-        )}
-      >
+      <div className={clsx(isOpen ? 'block' : 'hidden')}>
         <Link
           href='/dashboard/patients/create'
           className='absolute bottom-32 right-6'
