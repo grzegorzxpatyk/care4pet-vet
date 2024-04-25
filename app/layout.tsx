@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${GeistSans.className} h-dvh w-dvw bg-zinc-200 text-zinc-950 dark:bg-zinc-900 dark:text-zinc-100`}
+        className={`${GeistSans.className} h-dvh w-dvw overflow-hidden bg-zinc-200 text-zinc-950 dark:bg-zinc-900 dark:text-zinc-100`}
       >
         {children}
       </body>
