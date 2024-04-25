@@ -12,6 +12,7 @@ const button = cva(
     'transition-all',
     'active:scale-95',
     'font-semibold',
+    'whitespace-nowrap',
   ],
   {
     variants: {
