@@ -80,6 +80,7 @@ export default function AddButton() {
             href='/dashboard/patients/create'
             className='absolute bottom-32 right-4'
             passHref
+            tabIndex={-1}
           >
             <Button variant={'ghost'}>Patient</Button>
           </Link>
@@ -89,6 +90,7 @@ export default function AddButton() {
             href='/dashboard/customers/create'
             className='absolute bottom-24 right-28'
             passHref
+            tabIndex={-1}
           >
             <Button variant={'ghost'}>Customer</Button>
           </Link>
@@ -98,6 +100,7 @@ export default function AddButton() {
             href='/dashboard/history/create'
             className='absolute bottom-8 right-32'
             passHref
+            tabIndex={-1}
           >
             <Button variant={'ghost'}>Appointment entry</Button>
           </Link>
