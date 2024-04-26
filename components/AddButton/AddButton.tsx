@@ -2,9 +2,9 @@
 
 import { PlusIcon } from '@radix-ui/react-icons';
 import Button from '../Button/Button';
-import { AnimationEvent, FocusEvent, useEffect, useState } from 'react';
+import { FocusEvent, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { delay, motion, useAnimation, Variants } from 'framer-motion';
+import { motion, useAnimation, Variants } from 'framer-motion';
 
 const ContainerVariants: Variants = {
   initial: {
