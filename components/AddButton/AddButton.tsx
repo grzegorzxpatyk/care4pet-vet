@@ -9,7 +9,7 @@ import { motion, useAnimation, Variants } from 'framer-motion';
 const ContainerVariants: Variants = {
   initial: {
     display: 'none',
-    transition: { staggerChildren: 0.1, delayChildren: 0.01, delay: 0.5 },
+    transition: { staggerChildren: 0.1, delay: 0.35 },
     transitionEnd: {
       display: 'none',
     },
@@ -17,7 +17,7 @@ const ContainerVariants: Variants = {
   display: { display: 'block' },
   animate: {
     display: 'block',
-    transition: { staggerChildren: 0.1, delayChildren: 0.01 },
+    transition: { staggerChildren: 0.1 },
   },
 };
 
@@ -44,9 +44,10 @@ export default function AddButton() {
 
   useEffect(() => {
     if (isOpen) {
-      controls.start('display').then(() => {
-        controls.start('animate');
-      });
+      (async () => {
+        await controls.start('display');
+        await controls.start('animate');
+      })();
     } else {
       controls.start('initial');
     }
@@ -77,7 +78,7 @@ export default function AddButton() {
         <motion.div className='child' variants={ButtonsVariants}>
           <Link
             href='/dashboard/patients/create'
-            className='absolute bottom-32 right-6'
+            className='absolute bottom-32 right-4'
             passHref
           >
             <Button variant={'ghost'}>Patient</Button>
@@ -86,7 +87,7 @@ export default function AddButton() {
         <motion.div className='child' variants={ButtonsVariants}>
           <Link
             href='/dashboard/customers/create'
-            className='absolute bottom-24 right-[7.5rem]'
+            className='absolute bottom-24 right-28'
             passHref
           >
             <Button variant={'ghost'}>Customer</Button>
@@ -95,7 +96,7 @@ export default function AddButton() {
         <motion.div className='child' variants={ButtonsVariants}>
           <Link
             href='/dashboard/history/create'
-            className='absolute bottom-8 right-[8.5rem]'
+            className='absolute bottom-8 right-32'
             passHref
           >
             <Button variant={'ghost'}>Appointment entry</Button>
