@@ -2,16 +2,55 @@
 
 import { PlusIcon } from '@radix-ui/react-icons';
 import Button from '../Button/Button';
-import { FocusEvent, useState } from 'react';
+import { FocusEvent, useEffect, useState } from 'react';
 import Link from 'next/link';
-import clsx from 'clsx';
+import { motion, useAnimation, Variants } from 'framer-motion';
+
+const ContainerVariants: Variants = {
+  initial: {
+    display: 'none',
+    transition: { staggerChildren: 0.1, delayChildren: 0.01, delay: 0.5 },
+    transitionEnd: {
+      display: 'none',
+    },
+  },
+  display: { display: 'block' },
+  animate: {
+    display: 'block',
+    transition: { staggerChildren: 0.1, delayChildren: 0.01 },
+  },
+};
+
+const ButtonsVariants: Variants = {
+  animate: {
+    opacity: 1,
+    x: '-1rem',
+    y: '-1rem',
+  },
+  initial: {
+    opacity: 0,
+    x: 0,
+    y: 0,
+  },
+};
 
 export default function AddButton() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const controls = useAnimation();
 
   function handleClick() {
     setIsOpen(!isOpen);
   }
+
+  useEffect(() => {
+    if (isOpen) {
+      controls.start('display').then(() => {
+        controls.start('animate');
+      });
+    } else {
+      controls.start('initial');
+    }
+  }, [isOpen, controls]);
 
   function handleBlur(event: FocusEvent<HTMLButtonElement>) {
     if (event.relatedTarget !== null) return;
@@ -24,40 +63,45 @@ export default function AddButton() {
         variant={'ghost'}
         onClick={handleClick}
         onBlur={handleBlur}
-        className={clsx(
-          'fixed bottom-8 right-8 h-16 w-16 min-w-16 rounded-full bg-blue-600/10 text-2xl transition-shadow',
-          isOpen
-            ? 'shadow-[2rem_2rem_8rem_8rem] shadow-blue-500/30'
-            : 'shadow-[2rem_2rem_0_0] shadow-blue-500/0'
-        )}
+        className='fixed bottom-8 right-8 h-16 w-16 min-w-16 rounded-full bg-blue-600/10 text-2xl'
       >
         <span className='scale-150'>
           <PlusIcon />
         </span>
       </Button>
-      <div className={clsx(isOpen ? 'block' : 'hidden')}>
-        <Link
-          href='/dashboard/patients/create'
-          className='absolute bottom-32 right-6'
-          passHref
-        >
-          <Button variant={'ghost'}>Patient</Button>
-        </Link>
-        <Link
-          href='/dashboard/customers/create'
-          className='absolute bottom-24 right-[7.5rem]'
-          passHref
-        >
-          <Button variant={'ghost'}>Customer</Button>
-        </Link>
-        <Link
-          href='/dashboard/history/create'
-          className='absolute bottom-8 right-[8.5rem]'
-          passHref
-        >
-          <Button variant={'ghost'}>Appointment entry</Button>
-        </Link>
-      </div>
+      <motion.div
+        animate={controls}
+        initial='initial'
+        variants={ContainerVariants}
+      >
+        <motion.div className='child' variants={ButtonsVariants}>
+          <Link
+            href='/dashboard/patients/create'
+            className='absolute bottom-32 right-6'
+            passHref
+          >
+            <Button variant={'ghost'}>Patient</Button>
+          </Link>
+        </motion.div>
+        <motion.div className='child' variants={ButtonsVariants}>
+          <Link
+            href='/dashboard/customers/create'
+            className='absolute bottom-24 right-[7.5rem]'
+            passHref
+          >
+            <Button variant={'ghost'}>Customer</Button>
+          </Link>
+        </motion.div>
+        <motion.div className='child' variants={ButtonsVariants}>
+          <Link
+            href='/dashboard/history/create'
+            className='absolute bottom-8 right-[8.5rem]'
+            passHref
+          >
+            <Button variant={'ghost'}>Appointment entry</Button>
+          </Link>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
