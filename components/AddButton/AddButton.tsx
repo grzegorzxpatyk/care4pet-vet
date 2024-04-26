@@ -10,9 +10,6 @@ const ContainerVariants: Variants = {
   initial: {
     display: 'none',
     transition: { staggerChildren: 0.1, delay: 0.35 },
-    transitionEnd: {
-      display: 'none',
-    },
   },
   display: { display: 'block' },
   animate: {
