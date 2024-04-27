@@ -1,10 +1,12 @@
 import { createKysely } from '@vercel/postgres-kysely';
 import { unstable_noStore as noStore } from 'next/cache';
-import { Customer, IPet, UUID } from './types';
+import { Customer, HealthRecord, IPet, User, UUID } from './types';
 
 interface Database {
   patients: IPet;
   customers: Customer;
+  users: User;
+  health_records: HealthRecord;
 }
 
 const db = createKysely<Database>();
@@ -102,5 +104,52 @@ export async function fetchPatientsByOwnerId(ownerId: UUID) {
       `Error occured while fetching patients by ownerId data: ${error}`
     );
     throw new Error('Failed to fetch patients data.');
+  }
+}
+
+export async function fetchHealthRecord(id: UUID) {
+  noStore();
+  try {
+    const healthRecord = await db
+      .selectFrom('health_records')
+      .selectAll()
+      .where('id', '=', id)
+      .executeTakeFirst();
+    return healthRecord;
+  } catch (error) {
+    console.error(`Error occured while fetching health record data: ${error}`);
+    throw new Error('Failed to fetch health record data.');
+  }
+}
+
+export async function fetchUserByEmail(
+  email: string
+): Promise<User | undefined> {
+  try {
+    const user = await db
+      .selectFrom('users')
+      .selectAll()
+      .where('email', '=', email)
+      .executeTakeFirst();
+
+    return user;
+  } catch (error) {
+    console.error('Failed to fetch user:', error);
+    throw new Error('Failed to fetch user.');
+  }
+}
+
+export async function fetchUserById(id: UUID) {
+  try {
+    const user = await db
+      .selectFrom('users')
+      .selectAll()
+      .where('id', '=', id)
+      .executeTakeFirst();
+
+    return user;
+  } catch (error) {
+    console.error('Failed to fetch user:', error);
+    throw new Error('Failed to fetch user.');
   }
 }

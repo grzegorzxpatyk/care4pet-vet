@@ -4,7 +4,7 @@ import { sql } from '@vercel/postgres';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
-import { Customer, IPet, Species } from './types';
+import { Customer, HealthRecord, IPet, Species, User, UUID } from './types';
 import { createKysely } from '@vercel/postgres-kysely';
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
@@ -31,6 +31,8 @@ export async function authenticate(
 interface Database {
   patients: Omit<IPet, 'id'>;
   customers: Omit<Customer, 'id'>;
+  users: User;
+  health_records: Omit<HealthRecord, 'id' | 'date'>;
 }
 
 const db = createKysely<Database>();
@@ -105,4 +107,39 @@ export async function createPatient(formData: FormData) {
 
   revalidatePath('/dashboard/patients');
   redirect('/dashboard/patients');
+}
+
+const HealthRecordFormSchema = z.object({
+  id: z.string().uuid(),
+  pet_id: z.string().uuid(),
+  vet_id: z.string().uuid(),
+  date: z.string().datetime(),
+  description: z.string(),
+  medication: z.string().nullish(),
+});
+
+const CreateHelthRecord = HealthRecordFormSchema.omit({ id: true, date: true });
+
+export async function createHealthRecord(formData: FormData) {
+  const { pet_id, vet_id, description, medication } = CreateHelthRecord.parse({
+    pet_id: formData.get('pet_id'),
+    vet_id: formData.get('vet_id'),
+    description: formData.get('description'),
+    medication: formData.has('medication')
+      ? formData.get('medication')
+      : undefined,
+  });
+
+  await db
+    .insertInto('health_records')
+    .values({
+      pet_id: pet_id as UUID,
+      vet_id: vet_id as UUID,
+      description: description,
+      medication: medication as string | undefined,
+    })
+    .execute();
+
+  revalidatePath('/dashboard/health-record');
+  redirect('/dashboard/health-record');
 }
