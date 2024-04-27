@@ -38,9 +38,11 @@ export type Veterinarian = {
   phonenumber: string;
 };
 
-export type HistoryEntry = {
+export type HealthRecord = {
+  id: UUID;
   petId: UUID;
   vetId: UUID;
   date: Date;
   description: string;
+  medication: string;
 };
