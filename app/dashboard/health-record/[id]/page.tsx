@@ -41,7 +41,7 @@ export default async function Page({ params }: { params: { id: UUID } }) {
       {healthRecord.medication && (
         <article>
           <h3 className='text-2xl'>Medication</h3>
-          <p>{healthRecord.description}</p>
+          <p>{healthRecord.medication}</p>
         </article>
       )}
     </div>
