@@ -94,12 +94,12 @@ export default function AddButton() {
         </motion.div>
         <motion.div className='child' variants={ButtonsVariants}>
           <Link
-            href='/dashboard/history/create'
+            href='/dashboard/health-record/create'
             className='absolute bottom-8 right-32'
             passHref
             tabIndex={-1}
           >
-            <Button variant={'ghost'}>Appointment entry</Button>
+            <Button variant={'ghost'}>Health record</Button>
           </Link>
         </motion.div>
       </motion.div>

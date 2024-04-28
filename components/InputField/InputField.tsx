@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 interface InputFieldProps extends React.HTMLProps<HTMLInputElement> {
   name: string;
   label: string;
@@ -6,7 +8,10 @@ interface InputFieldProps extends React.HTMLProps<HTMLInputElement> {
 export default function InputField({ name, label, ...props }: InputFieldProps) {
   return (
     <div className='flex w-full select-none flex-row items-center justify-between gap-4'>
-      <label htmlFor={name} className='select-none'>
+      <label
+        htmlFor={name}
+        className={clsx('select-none', props.hidden && 'hidden')}
+      >
         {label}
       </label>
       <input

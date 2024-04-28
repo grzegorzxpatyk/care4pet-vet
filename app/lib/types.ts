@@ -1,7 +1,7 @@
 export type UUID = `${string}-${string}-${string}-${string}-${string}`;
 
 export type User = {
-  id: string;
+  id: UUID;
   name: string;
   email: string;
   password: string;
@@ -38,9 +38,11 @@ export type Veterinarian = {
   phonenumber: string;
 };
 
-export type HistoryEntry = {
-  petId: UUID;
-  vetId: UUID;
+export type HealthRecord = {
+  id: UUID;
+  pet_id: UUID;
+  vet_id: UUID;
   date: Date;
   description: string;
+  medication?: string;
 };
