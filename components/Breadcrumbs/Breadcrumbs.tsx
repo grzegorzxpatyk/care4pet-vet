@@ -3,6 +3,12 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+const breadcrumbFormatted = async (breadcrumb: string) => {
+  return breadcrumb.includes('-')
+    ? breadcrumb.split('-').join(' ')
+    : breadcrumb;
+};
+
 export default function Breadcrumbs() {
   const pathname = usePathname();
   const pathnameArray = pathname.split('/').slice(1);
@@ -15,7 +21,7 @@ export default function Breadcrumbs() {
             href={`/${pathnameArray.slice(0, i + 1).join('/')}`}
             className='mr-2 capitalize'
           >
-            {element}
+            {breadcrumbFormatted(element)}
           </Link>
           {i < pathnameArray.length - 1 && '>'}
         </span>
