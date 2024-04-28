@@ -114,7 +114,7 @@ export async function fetchHealthRecord(id: UUID) {
       .selectFrom('health_records')
       .selectAll()
       .where('id', '=', id)
-      .executeTakeFirst();
+      .executeTakeFirstOrThrow();
     return healthRecord;
   } catch (error) {
     console.error(`Error occured while fetching health record data: ${error}`);
@@ -122,34 +122,32 @@ export async function fetchHealthRecord(id: UUID) {
   }
 }
 
-export async function fetchUserByEmail(
-  email: string
-): Promise<User | undefined> {
+export async function fetchUserByEmail(email: string) {
+  noStore();
   try {
     const user = await db
       .selectFrom('users')
       .selectAll()
       .where('email', '=', email)
       .executeTakeFirst();
-
     return user;
   } catch (error) {
-    console.error('Failed to fetch user:', error);
+    console.error(`Failed to fetch user: ${error}`);
     throw new Error('Failed to fetch user.');
   }
 }
 
-export async function fetchUserById(id: UUID) {
+export async function fetchUser(id: UUID) {
+  noStore();
   try {
     const user = await db
       .selectFrom('users')
       .selectAll()
       .where('id', '=', id)
-      .executeTakeFirst();
-
+      .executeTakeFirstOrThrow();
     return user;
   } catch (error) {
-    console.error('Failed to fetch user:', error);
-    throw new Error('Failed to fetch user.');
+    console.error(`Error occured while fetching patient data: ${error}`);
+    throw new Error('Failed to fetch patient data.');
   }
 }
