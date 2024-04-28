@@ -1,6 +1,6 @@
-import { fetchHealthRecord, fetchPatient, fetchUserById } from '@/app/lib/data';
 import { UUID } from '@/app/lib/types';
 import { fetchHealthRecord, fetchPatient, fetchUser } from '@/app/lib/data';
+import clsx from 'clsx';
 
 export default async function Page({ params }: { params: { id: UUID } }) {
   const healthRecord = await fetchHealthRecord(params.id);
@@ -32,10 +32,18 @@ export default async function Page({ params }: { params: { id: UUID } }) {
           </ul>
         </div>
       </div>
-      <article>
+      <article
+        className={clsx(healthRecord.medication && 'border-b border-zinc-500')}
+      >
         <h3 className='text-2xl'>Description</h3>
         <p>{healthRecord.description}</p>
       </article>
+      {healthRecord.medication && (
+        <article>
+          <h3 className='text-2xl'>Medication</h3>
+          <p>{healthRecord.description}</p>
+        </article>
+      )}
     </div>
   );
 }
