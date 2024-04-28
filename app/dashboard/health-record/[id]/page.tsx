@@ -1,17 +1,11 @@
 import { fetchHealthRecord, fetchPatient, fetchUserById } from '@/app/lib/data';
 import { UUID } from '@/app/lib/types';
+import { fetchHealthRecord, fetchPatient, fetchUser } from '@/app/lib/data';
 
 export default async function Page({ params }: { params: { id: UUID } }) {
   const healthRecord = await fetchHealthRecord(params.id);
-  if (!healthRecord) {
-    return new Error('Surprise Motherfucker');
-  }
-  const vet = await fetchUserById(healthRecord.vet_id);
+  const vet = await fetchUser(healthRecord.vet_id);
   const pet = await fetchPatient(healthRecord.pet_id);
-
-  if (!vet || !pet) {
-    return new Error('Surprise Motherfucker x2');
-  }
 
   return (
     <div className='flex flex-col items-start justify-start gap-4'>
