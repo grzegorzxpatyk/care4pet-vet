@@ -113,8 +113,19 @@ export async function fetchHealthRecords() {
   noStore();
   try {
     const healthRecords = await db
-      .selectFrom('health_records')
-      .selectAll()
+      .selectFrom('health_records as hr')
+      .innerJoin('patients as p', 'p.id', 'hr.pet_id')
+      .innerJoin('users as v', 'v.id', 'hr.vet_id')
+      .select([
+        'hr.id',
+        'hr.date',
+        'hr.pet_id',
+        'hr.vet_id',
+        'hr.description',
+        'hr.medication',
+        'p.name as patient_name',
+        'v.name as vet_name',
+      ])
       .execute();
     return healthRecords;
   } catch (error) {
