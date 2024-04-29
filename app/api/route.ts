@@ -36,6 +36,6 @@ export async function GET(request: Request) {
     id: foundResource.id,
     name:
       foundResource.name ??
-      `${foundResource.date.toDateString()}, ${foundResource.date.toTimeString()}`,
+      `${foundResource.date.toDateString()}, ${foundResource.date.toTimeString().slice(0, 5)}`,
   });
 }
