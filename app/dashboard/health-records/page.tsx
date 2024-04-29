@@ -10,10 +10,12 @@ export default async function Page() {
       <h1 className='text-4xl'>List of health records</h1>
       <table className='w-full'>
         <thead>
-          <th>Date</th>
-          <th>Pet</th>
-          <th>Veterinarian</th>
-          <th></th>
+          <tr>
+            <th>Date</th>
+            <th>Pet</th>
+            <th>Veterinarian</th>
+            <th></th>
+          </tr>
         </thead>
         <tbody>
           {healthRecords.map((record) => (
