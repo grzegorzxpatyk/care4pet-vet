@@ -109,6 +109,20 @@ export async function fetchPatientsByOwnerId(ownerId: UUID) {
   }
 }
 
+export async function fetchHealthRecords() {
+  noStore();
+  try {
+    const healthRecords = await db
+      .selectFrom('health_records')
+      .selectAll()
+      .execute();
+    return healthRecords;
+  } catch (error) {
+    console.error(`Error occured while fetching health records: ${error}`);
+    throw new Error('Failed to fetch health records.');
+  }
+}
+
 export async function fetchHealthRecord(id: UUID) {
   noStore();
   try {
@@ -165,7 +179,7 @@ export async function fetchResourceByIdAndTableName(
     }
     const patientName = await db
       .selectFrom(tableName)
-      .select(['id', 'name'])
+      .selectAll()
       .where('id', '=', id)
       .executeTakeFirstOrThrow();
     return patientName;
