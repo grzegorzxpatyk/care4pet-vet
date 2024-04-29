@@ -32,9 +32,9 @@ export default function Breadcrumbs() {
         );
       }
       setBreadcrumbArray(
-        pathArray.map((element, i) => {
+        labelArray.map((element, i) => {
           return {
-            label: `${labelArray[i].charAt(0).toUpperCase()}${labelArray[i].slice(1)}`,
+            label: `${element.charAt(0).toUpperCase()}${element.slice(1)}`,
             url: `/${pathArray.slice(0, i + 1).join('/')}`,
           };
         })
