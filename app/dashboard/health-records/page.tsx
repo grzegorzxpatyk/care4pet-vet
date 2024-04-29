@@ -25,7 +25,7 @@ export default async function Page() {
               <td>{record.pet_id}</td>
               <td>{record.vet_id}</td>
               <td>
-                <Link href={`/dashboard/health-record/${record.id}`} passHref>
+                <Link href={`/dashboard/health-records/${record.id}`} passHref>
                   <Button variant={'ghost'}>details</Button>
                 </Link>
               </td>
@@ -33,7 +33,7 @@ export default async function Page() {
           ))}
         </tbody>
       </table>
-      <Link href={'/dashboard/health-record/create'} passHref>
+      <Link href={'/dashboard/health-records/create'} passHref>
         <Button variant={'ghost'}>Create</Button>
       </Link>
     </div>

@@ -22,7 +22,7 @@ export async function GET(request: Request) {
     );
   }
   let tableName = pathnameArray?.at(2);
-  if (tableName === 'health-record') {
+  if (tableName === 'health-records') {
     tableName = 'health_records';
   }
 

@@ -94,7 +94,7 @@ export default function AddButton() {
         </motion.div>
         <motion.div className='child' variants={ButtonsVariants}>
           <Link
-            href='/dashboard/health-record/create'
+            href='/dashboard/health-records/create'
             className='absolute bottom-8 right-32'
             passHref
             tabIndex={-1}

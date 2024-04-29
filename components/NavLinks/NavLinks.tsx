@@ -9,7 +9,7 @@ export default function NavLinks() {
 
   return (
     <ul className='flex w-full flex-col justify-start gap-2'>
-      {['patients', 'customers', 'health-record', 'inventory', 'settings'].map(
+      {['patients', 'customers', 'health-records', 'inventory', 'settings'].map(
         (route) => (
           <Link key={route} href={`/dashboard/${route}`}>
             <li
