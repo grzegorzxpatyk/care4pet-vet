@@ -140,6 +140,6 @@ export async function createHealthRecord(formData: FormData) {
     })
     .execute();
 
-  revalidatePath('/dashboard/health-record');
-  redirect('/dashboard/health-record');
+  revalidatePath('/dashboard/health-records');
+  redirect('/dashboard/health-records');
 }

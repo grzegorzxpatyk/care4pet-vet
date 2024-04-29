@@ -9,6 +9,8 @@ interface Database {
   health_records: HealthRecord;
 }
 
+export type TableName = 'patients' | 'customers' | 'users' | 'health_records';
+
 const db = createKysely<Database>();
 
 export async function fetchCustomers() {
@@ -107,6 +109,31 @@ export async function fetchPatientsByOwnerId(ownerId: UUID) {
   }
 }
 
+export async function fetchHealthRecords() {
+  noStore();
+  try {
+    const healthRecords = await db
+      .selectFrom('health_records as hr')
+      .innerJoin('patients as p', 'p.id', 'hr.pet_id')
+      .innerJoin('users as v', 'v.id', 'hr.vet_id')
+      .select([
+        'hr.id',
+        'hr.date',
+        'hr.pet_id',
+        'hr.vet_id',
+        'hr.description',
+        'hr.medication',
+        'p.name as patient_name',
+        'v.name as vet_name',
+      ])
+      .execute();
+    return healthRecords;
+  } catch (error) {
+    console.error(`Error occured while fetching health records: ${error}`);
+    throw new Error('Failed to fetch health records.');
+  }
+}
+
 export async function fetchHealthRecord(id: UUID) {
   noStore();
   try {
@@ -146,6 +173,27 @@ export async function fetchUser(id: UUID) {
       .where('id', '=', id)
       .executeTakeFirstOrThrow();
     return user;
+  } catch (error) {
+    console.error(`Error occured while fetching patient data: ${error}`);
+    throw new Error('Failed to fetch patient data.');
+  }
+}
+
+export async function fetchResourceByIdAndTableName(
+  id: UUID,
+  tableName: TableName
+) {
+  noStore();
+  try {
+    if (!id || !tableName) {
+      throw new Error('Missing function parameter(s)');
+    }
+    const patientName = await db
+      .selectFrom(tableName)
+      .selectAll()
+      .where('id', '=', id)
+      .executeTakeFirstOrThrow();
+    return patientName;
   } catch (error) {
     console.error(`Error occured while fetching patient data: ${error}`);
     throw new Error('Failed to fetch patient data.');
