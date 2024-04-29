@@ -21,7 +21,10 @@ export async function GET(request: Request) {
       'The provided id in X-PATHNAME header value is not in UUID format.'
     );
   }
-  const tableName = pathnameArray?.at(2);
+  let tableName = pathnameArray?.at(2);
+  if (tableName === 'health-record') {
+    tableName = 'health_records';
+  }
 
   if (!isTableName(tableName)) {
     throw new Error('The category provided in pathname is unknown.');
@@ -29,5 +32,10 @@ export async function GET(request: Request) {
 
   const foundResource = await fetchResourceByIdAndTableName(id, tableName);
 
-  return Response.json({ id: foundResource.id, name: foundResource.name });
+  return Response.json({
+    id: foundResource.id,
+    name:
+      foundResource.name ??
+      `${foundResource.date.toDateString()}, ${foundResource.date.toTimeString()}`,
+  });
 }
