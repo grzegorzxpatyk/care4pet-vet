@@ -9,6 +9,8 @@ interface Database {
   health_records: HealthRecord;
 }
 
+export type TableName = 'patients' | 'customers' | 'users' | 'health_records';
+
 const db = createKysely<Database>();
 
 export async function fetchCustomers() {
@@ -146,6 +148,27 @@ export async function fetchUser(id: UUID) {
       .where('id', '=', id)
       .executeTakeFirstOrThrow();
     return user;
+  } catch (error) {
+    console.error(`Error occured while fetching patient data: ${error}`);
+    throw new Error('Failed to fetch patient data.');
+  }
+}
+
+export async function fetchResourceByIdAndTableName(
+  id: UUID,
+  tableName: TableName
+) {
+  noStore();
+  try {
+    if (!id || !tableName) {
+      throw new Error('Missing function parameter(s)');
+    }
+    const patientName = await db
+      .selectFrom(tableName)
+      .select(['id', 'name'])
+      .where('id', '=', id)
+      .executeTakeFirstOrThrow();
+    return patientName;
   } catch (error) {
     console.error(`Error occured while fetching patient data: ${error}`);
     throw new Error('Failed to fetch patient data.');

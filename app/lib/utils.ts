@@ -1,3 +1,4 @@
+import { TableName } from './data';
 import { UUID } from './types';
 
 export function isUUID(value: any): value is UUID {
@@ -9,12 +10,14 @@ export function isUUID(value: any): value is UUID {
   return typeof value === 'string' && uuidRegex.test(value);
 }
 
-export const fetchResource = async (id: UUID) => {
-  const res = await fetch('http://localhost:3000/api', {
-    headers: {
-      'X-ID': id,
-    },
-  });
-  const data = await res.json();
-  return data.pathname;
+export function isTableName(value: any): value is TableName {
+  const tableNameRegex = /^(patients|customers|users|health_records)$/;
+
+  return typeof value === 'string' && tableNameRegex.test(value);
+}
+
+export const formatBreadcrumb = async (breadcrumb: string) => {
+  return breadcrumb.includes('-')
+    ? breadcrumb.split('-').join(' ')
+    : breadcrumb;
 };
