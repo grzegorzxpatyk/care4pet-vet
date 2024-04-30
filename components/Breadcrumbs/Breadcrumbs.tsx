@@ -17,7 +17,7 @@ export default function Breadcrumbs() {
   useEffect(() => {
     const func = async () => {
       const pathArray = pathname.split('/').slice(1);
-      const labelArray = pathname.split('/').slice(1);
+      const labelArray = pathArray;
       if (labelArray.some((element) => isUUID(element))) {
         const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api`, {
           headers: {
