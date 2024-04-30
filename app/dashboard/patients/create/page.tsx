@@ -1,9 +1,9 @@
 import { createPatient } from '@/app/lib/actions';
 import { fetchCustomersIdAndName } from '@/app/lib/data';
 import { Species } from '@/app/lib/types';
-import Button from '@/components/Button/Button';
 import InputField from '@/components/InputField/InputField';
 import Select from '@/components/Select/Select';
+import SubmitButton from '@/components/SubmitButton/SubmitButton';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -42,7 +42,7 @@ export default async function Page() {
         placeholder="Select patient's owner"
         values={customersFormatted}
       />
-      <Button type='submit'>Create</Button>
+      <SubmitButton>Create</SubmitButton>
     </form>
   );
 }
