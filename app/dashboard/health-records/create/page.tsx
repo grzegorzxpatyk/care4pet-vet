@@ -4,6 +4,7 @@ import { auth } from '@/auth';
 import Button from '@/components/Button/Button';
 import InputField from '@/components/InputField/InputField';
 import Select from '@/components/Select/Select';
+import Textarea from '@/components/Textarea/Textarea';
 
 export default async function Page() {
   const patients = await fetchPatients();
@@ -25,22 +26,30 @@ export default async function Page() {
     >
       <InputField
         readOnly
+        disabled
         name='vetName'
         label='Veterinarian'
         type='text'
         value={fullName}
       />
-      <InputField hidden name='vet_id' label='Veterinarian ID' value={userId} />
+      <InputField
+        hidden
+        readOnly
+        name='vet_id'
+        label='Veterinarian ID'
+        value={userId}
+      />
       <Select
         name='pet_id'
         label='Patient'
         placeholder='Select patient'
         values={patientsFormatted}
       />
-      <InputField
+      <Textarea
         name='description'
-        label='Appointment Description'
-        type='text'
+        label='Appointment description'
+        rows={5}
+        placeholder='Place your notes here...'
         required
       />
       <Button type='submit'>Create</Button>

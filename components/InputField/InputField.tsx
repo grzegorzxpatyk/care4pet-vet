@@ -17,7 +17,7 @@ export default function InputField({ name, label, ...props }: InputFieldProps) {
       <input
         name={name}
         id={name}
-        className='rounded bg-zinc-400/50 p-2'
+        className='rounded bg-zinc-300 p-2 text-zinc-950 placeholder:text-zinc-500 dark:bg-zinc-800 dark:text-zinc-50'
         {...props}
       />
     </div>
