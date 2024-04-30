@@ -26,12 +26,19 @@ export default async function Page() {
     >
       <InputField
         readOnly
+        disabled
         name='vetName'
         label='Veterinarian'
         type='text'
         value={fullName}
       />
-      <InputField hidden name='vet_id' label='Veterinarian ID' value={userId} />
+      <InputField
+        hidden
+        readOnly
+        name='vet_id'
+        label='Veterinarian ID'
+        value={userId}
+      />
       <Select
         name='pet_id'
         label='Patient'

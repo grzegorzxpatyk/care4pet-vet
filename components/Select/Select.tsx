@@ -22,7 +22,7 @@ export default function Select({
     <div className='inline-flex w-full flex-row items-center justify-between gap-4'>
       <label htmlFor={name}>{label}</label>
       <RadixSelect.Root name={name}>
-        <RadixSelect.Trigger className='inline-flex w-full items-center justify-center gap-[5px] rounded bg-zinc-400 p-2 text-base leading-none shadow-[0_2px_10px] shadow-black/10 outline-none hover:bg-zinc-400 focus:shadow-[0_0_0_2px] focus:shadow-black data-[placeholder]:text-zinc-300 dark:bg-zinc-700 hover:dark:bg-zinc-600'>
+        <RadixSelect.Trigger className='inline-flex w-full items-center justify-center gap-[5px] rounded bg-zinc-300 p-2 text-base leading-none outline-none hover:bg-zinc-400 focus:shadow-[0_0_0_2px] focus:shadow-black data-[placeholder]:text-zinc-950 dark:bg-zinc-800 hover:dark:bg-zinc-700 dark:focus:shadow-white dark:data-[placeholder]:text-zinc-50'>
           <RadixSelect.Value placeholder={placeholder} />
           <RadixSelect.Icon>
             <ChevronDownIcon />
