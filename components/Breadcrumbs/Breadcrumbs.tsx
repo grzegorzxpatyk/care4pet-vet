@@ -19,7 +19,7 @@ export default function Breadcrumbs() {
       const pathArray = pathname.split('/').slice(1);
       const labelArray = pathname.split('/').slice(1);
       if (labelArray.some((element) => isUUID(element))) {
-        const res = await fetch('http://localhost:3000/api', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api`, {
           headers: {
             'X-PATHNAME': pathname,
           },
