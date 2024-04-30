@@ -4,6 +4,7 @@ import { auth } from '@/auth';
 import Button from '@/components/Button/Button';
 import InputField from '@/components/InputField/InputField';
 import Select from '@/components/Select/Select';
+import SubmitButton from '@/components/SubmitButton/SubmitButton';
 import Textarea from '@/components/Textarea/Textarea';
 
 export default async function Page() {
@@ -13,7 +14,7 @@ export default async function Page() {
     value: patient.id,
   }));
   const session = await auth();
-  if (!session?.user?.email) return;
+  if (!session?.user?.email) throw new Error('user not logged in');
 
   const user = await fetchUserByEmail(session?.user?.email);
   const fullName = user?.name;
@@ -52,7 +53,7 @@ export default async function Page() {
         placeholder='Place your notes here...'
         required
       />
-      <Button type='submit'>Create</Button>
+      <SubmitButton>Create</SubmitButton>
     </form>
   );
 }
