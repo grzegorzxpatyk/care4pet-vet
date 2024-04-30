@@ -1,6 +1,6 @@
 import { createCustomer } from '@/app/lib/actions';
-import Button from '@/components/Button/Button';
 import InputField from '@/components/InputField/InputField';
+import SubmitButton from '@/components/SubmitButton/SubmitButton';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export default function Page() {
       <InputField name='email' label='Email' type='email' />
       <InputField name='phoneNumber' label='Phone number' type='tel' />
 
-      <Button type='submit'>Create</Button>
+      <SubmitButton>Create</SubmitButton>
     </form>
   );
 }

@@ -1,7 +1,6 @@
 import { createHealthRecord } from '@/app/lib/actions';
 import { fetchPatients, fetchUserByEmail } from '@/app/lib/data';
 import { auth } from '@/auth';
-import Button from '@/components/Button/Button';
 import InputField from '@/components/InputField/InputField';
 import Select from '@/components/Select/Select';
 import SubmitButton from '@/components/SubmitButton/SubmitButton';
