@@ -21,11 +21,19 @@ const config: Config = {
   darkMode: 'class',
   plugins: [
     nextui({
+      layout: {
+        radius: {
+          small: '0.25rem',
+          medium: '0.5rem',
+          large: '0.75rem',
+        },
+      },
       themes: {
         light: {
           colors: {
             foreground: colors.zinc[950],
             background: colors.zinc[200],
+            default: colors.zinc[300],
             primary: colors.blue[600],
           },
         },
@@ -33,6 +41,7 @@ const config: Config = {
           colors: {
             foreground: colors.zinc[100],
             background: colors.zinc[900],
+            default: colors.zinc[700],
             primary: colors.blue[700],
           },
         },
