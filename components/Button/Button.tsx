@@ -13,6 +13,7 @@ const button = cva(
     'active:scale-95',
     'font-semibold',
     'whitespace-nowrap',
+    'disabled:cursor-not-allowed',
   ],
   {
     variants: {
@@ -24,6 +25,8 @@ const button = cva(
           'dark:bg-zinc-100',
           'dark:text-zinc-900',
           'dark:hover:enabled:bg-zinc-300',
+          'disabled:text-zinc-400',
+          'dark:disabled:text-zinc-700',
         ],
         secondary: [
           'bg-zinc-100',
@@ -32,12 +35,15 @@ const button = cva(
           'dark:text-zinc-200',
           'hover:enabled:bg-zinc-300',
           'dark:hover:enabled:bg-zinc-800',
+          'dark:disabled:text-zinc-400',
+          'disabled:text-zinc-700',
         ],
         ghost: [
           'border-none',
           'bg-transparent',
           'text-blue-700',
           'hover:enabled:bg-blue-800/20',
+          'disabled:text-blue-500',
         ],
       },
       size: {
