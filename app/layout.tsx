@@ -1,6 +1,7 @@
 import './globals.css';
 import { GeistSans } from 'geist/font/sans';
 import type { Metadata } from 'next';
+import { Providers } from './providers';
 
 export const metadata: Metadata = {
   title: {
@@ -19,9 +20,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${GeistSans.className} h-dvh w-dvw overflow-hidden bg-zinc-200 text-zinc-950 dark:bg-zinc-900 dark:text-zinc-100`}
+        className={`${GeistSans.className} h-dvh w-dvw overflow-hidden bg-background text-foreground`}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
