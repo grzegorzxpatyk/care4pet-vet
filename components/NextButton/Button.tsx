@@ -13,6 +13,7 @@ const NextButton = extendVariants(Button, {
     },
   },
   defaultVariants: {
+    color: 'primary',
     radius: 'sm',
   },
 });

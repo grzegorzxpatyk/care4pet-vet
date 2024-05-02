@@ -1,4 +1,4 @@
-import Button from '@/components/Button/Button';
+import Button from '@/components/NextButton/Button';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
