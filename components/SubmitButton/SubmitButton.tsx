@@ -1,14 +1,13 @@
 'use client';
-import { useFormStatus } from 'react-dom';
-import Button, { ButtonProps } from '../Button/Button';
 
-export default function SubmitButton({
-  children,
-  ...props
-}: Omit<ButtonProps, 'type'>) {
+import { useFormStatus } from 'react-dom';
+import Button from '@/components/NextButton/Button';
+import { ButtonProps } from '@nextui-org/button';
+
+export default function SubmitButton({ children, ...props }: ButtonProps) {
   const { pending } = useFormStatus();
   return (
-    <Button type='submit' {...props} aria-disabled={pending} disabled={pending}>
+    <Button type='submit' {...props} color='primary' isLoading={pending}>
       {children}
     </Button>
   );

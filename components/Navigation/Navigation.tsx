@@ -1,4 +1,4 @@
-import Button from '../Button/Button';
+import Button from '../NextButton/Button';
 import { signOut } from '@/auth';
 import NavLinks from '../NavLinks/NavLinks';
 
@@ -13,7 +13,7 @@ export default function Navigation() {
         }}
         className='w-full'
       >
-        <Button variant={'secondary'} className='w-full'>
+        <Button type='submit' variant='flat' color='accent' className='w-full'>
           Sign Out
         </Button>
       </form>

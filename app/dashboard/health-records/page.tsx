@@ -1,5 +1,5 @@
 import { fetchHealthRecords } from '@/app/lib/data';
-import Button from '@/components/Button/Button';
+import Button from '@/components/NextButton/Button';
 import Link from 'next/link';
 
 export default async function Page() {
@@ -25,7 +25,9 @@ export default async function Page() {
               <td>{record.vet_name}</td>
               <td>
                 <Link href={`/dashboard/health-records/${record.id}`} passHref>
-                  <Button variant={'ghost'}>details</Button>
+                  <Button variant='shadow' color='accent' size='sm'>
+                    details
+                  </Button>
                 </Link>
               </td>
             </tr>
@@ -33,7 +35,9 @@ export default async function Page() {
         </tbody>
       </table>
       <Link href={'/dashboard/health-records/create'} passHref>
-        <Button variant={'ghost'}>Create</Button>
+        <Button variant='light' color='accent'>
+          Create
+        </Button>
       </Link>
     </div>
   );

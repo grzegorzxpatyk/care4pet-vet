@@ -1,5 +1,5 @@
 import { fetchPatients } from '@/app/lib/data';
-import Button from '@/components/Button/Button';
+import Button from '@/components/NextButton/Button';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
@@ -32,14 +32,14 @@ export default async function Page() {
               <td>{patient.owner_name}</td>
               <td className='w-20'>
                 <Link href={`/dashboard/patients/${patient.id}`} passHref>
-                  <Button variant={'ghost'} size={'sm'}>
+                  <Button variant='flat' size={'sm'}>
                     details
                   </Button>
                 </Link>
               </td>
               <td className='w-20 rounded-e'>
                 <Link href={`/dashboard/patients/${patient.id}/edit`} passHref>
-                  <Button variant={'ghost'} size={'sm'}>
+                  <Button variant='flat' size='sm'>
                     edit
                   </Button>
                 </Link>
@@ -49,7 +49,7 @@ export default async function Page() {
         </tbody>
       </table>
       <Link href={'/dashboard/patients/create'}>
-        <Button variant={'ghost'} type='button'>
+        <Button variant='light' color='accent'>
           Add patient
         </Button>
       </Link>

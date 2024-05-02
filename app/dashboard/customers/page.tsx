@@ -1,5 +1,5 @@
 import { fetchCustomers } from '@/app/lib/data';
-import Button from '@/components/Button/Button';
+import Button from '@/components/NextButton/Button';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
@@ -32,7 +32,7 @@ export default async function Page() {
                   href={`/dashboard/customers/${customer.id}/edit`}
                   passHref
                 >
-                  <Button variant={'ghost'} size={'sm'}>
+                  <Button variant='flat' color='accent' size='sm'>
                     edit
                   </Button>
                 </Link>
@@ -42,7 +42,7 @@ export default async function Page() {
         </tbody>
       </table>
       <Link href={'/dashboard/customers/create'}>
-        <Button variant={'ghost'} type='button'>
+        <Button variant='flat' color='accent' type='button'>
           Create customer
         </Button>
       </Link>
