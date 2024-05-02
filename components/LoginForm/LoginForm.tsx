@@ -3,7 +3,7 @@
 import { authenticate } from '@/app/lib/actions';
 import { ArrowRightIcon, CrossCircledIcon } from '@radix-ui/react-icons';
 import { useFormState, useFormStatus } from 'react-dom';
-import Button from '../Button/Button';
+import Button from '../NextButton/Button';
 import InputField from '../InputField/InputField';
 
 export default function LoginForm() {
@@ -39,8 +39,15 @@ function LoginButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button type='submit' aria-disabled={pending} disabled={pending}>
-      Log in <ArrowRightIcon className='ml-2' />
+    <Button
+      type='submit'
+      isLoading={pending}
+      variant='solid'
+      color='primary'
+      spinnerPlacement='end'
+      endContent={!pending && <ArrowRightIcon />}
+    >
+      Log in
     </Button>
   );
 }

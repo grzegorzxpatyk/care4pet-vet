@@ -1,10 +1,10 @@
 'use client';
 
-import { PlusIcon } from '@radix-ui/react-icons';
-import Button from '../Button/Button';
-import { FocusEvent, useEffect, useState } from 'react';
 import Link from 'next/link';
+import { PlusIcon } from '@radix-ui/react-icons';
+import { FocusEvent, useEffect, useState } from 'react';
 import { motion, useAnimation, Variants } from 'framer-motion';
+import Button from '../NextButton/Button';
 
 const ContainerVariants: Variants = {
   initial: {
@@ -50,7 +50,7 @@ export default function AddButton() {
     }
   }, [isOpen, controls]);
 
-  function handleBlur(event: FocusEvent<HTMLButtonElement>) {
+  function handleBlur(event: FocusEvent<Element, Element>) {
     if (event.relatedTarget !== null) return;
     setIsOpen(false);
   }
@@ -58,10 +58,12 @@ export default function AddButton() {
   return (
     <div className='fixed bottom-0 right-0'>
       <Button
-        variant={'ghost'}
         onClick={handleClick}
         onBlur={handleBlur}
-        className='fixed bottom-8 right-8 h-16 w-16 min-w-16 rounded-full bg-blue-600/10 text-2xl'
+        variant='flat'
+        color='accent'
+        radius='full'
+        className='fixed bottom-8 right-8 h-16 w-16 min-w-16'
       >
         <span className='scale-150'>
           <PlusIcon />
@@ -79,7 +81,9 @@ export default function AddButton() {
             passHref
             tabIndex={-1}
           >
-            <Button variant={'ghost'}>Patient</Button>
+            <Button variant='light' color='accent'>
+              Patient
+            </Button>
           </Link>
         </motion.div>
         <motion.div className='child' variants={ButtonsVariants}>
@@ -89,7 +93,9 @@ export default function AddButton() {
             passHref
             tabIndex={-1}
           >
-            <Button variant={'ghost'}>Customer</Button>
+            <Button variant='light' color='accent'>
+              Customer
+            </Button>
           </Link>
         </motion.div>
         <motion.div className='child' variants={ButtonsVariants}>
@@ -99,7 +105,9 @@ export default function AddButton() {
             passHref
             tabIndex={-1}
           >
-            <Button variant={'ghost'}>Health record</Button>
+            <Button variant='light' color='accent'>
+              Health record
+            </Button>
           </Link>
         </motion.div>
       </motion.div>
