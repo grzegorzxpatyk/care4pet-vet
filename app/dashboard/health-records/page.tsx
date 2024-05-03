@@ -1,5 +1,5 @@
 import { fetchHealthRecords } from '@/app/lib/data';
-import Button from '@/components/NextButton/Button';
+import Button from '@/components/Button/Button';
 import Link from 'next/link';
 
 export default async function Page() {

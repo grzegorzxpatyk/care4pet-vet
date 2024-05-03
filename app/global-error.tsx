@@ -16,8 +16,11 @@ export default function GlobalError({
         className={`${GeistSans.className} h-dvh w-dvw bg-zinc-200 text-zinc-950 dark:bg-zinc-900 dark:text-zinc-100`}
       >
         <div className='flex h-full w-full flex-col items-start justify-start gap-4'>
-          <h2 className='text-2xl'>Something went wrong!</h2>
-          <Button onClick={() => reset()}>Try again</Button>
+          <h2 className='text-2xl'>{error.name ?? 'Something went wrong!'}</h2>
+          <p>{error.message}</p>
+          <Button color='primary' onClick={() => reset()}>
+            Try again
+          </Button>
         </div>
       </body>
     </html>

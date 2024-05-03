@@ -3,7 +3,7 @@
 import { authenticate } from '@/app/lib/actions';
 import { ArrowRightIcon, CrossCircledIcon } from '@radix-ui/react-icons';
 import { useFormState, useFormStatus } from 'react-dom';
-import Button from '../NextButton/Button';
+import Button from '../Button/Button';
 import InputField from '../InputField/InputField';
 
 export default function LoginForm() {
@@ -12,7 +12,7 @@ export default function LoginForm() {
   return (
     <form
       action={dispatch}
-      className='flex flex-col items-start justify-start gap-4 rounded-lg border bg-zinc-400 p-8 dark:bg-zinc-950/50'
+      className='flex flex-col items-start justify-start gap-4 rounded-lg border bg-zinc-100 p-8 dark:bg-zinc-950/50'
     >
       <InputField name='email' label='E-mail' type='email' />
       <InputField name='password' label='Password' type='password' />

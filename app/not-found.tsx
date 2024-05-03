@@ -12,7 +12,7 @@ export default function NotFound() {
       <h2 className='text-4xl'>404 - Not Found</h2>
       <p>Could not find requested resource</p>
       <Link href='/'>
-        <Button>Return Home</Button>
+        <Button color='primary'>Return Home</Button>
       </Link>
     </div>
   );

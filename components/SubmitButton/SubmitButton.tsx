@@ -1,7 +1,7 @@
 'use client';
 
 import { useFormStatus } from 'react-dom';
-import Button from '@/components/NextButton/Button';
+import Button from '@/components/Button/Button';
 import { ButtonProps } from '@nextui-org/button';
 
 export default function SubmitButton({ children, ...props }: ButtonProps) {

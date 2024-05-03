@@ -17,7 +17,9 @@ export default function Error({
   return (
     <div className='flex flex-col items-start justify-start gap-4'>
       <h2 className='text-2xl'>Something went wrong!</h2>
-      <Button onClick={() => reset()}>Try again</Button>
+      <Button color='primary' onClick={() => reset()}>
+        Try again
+      </Button>
     </div>
   );
 }
