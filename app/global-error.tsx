@@ -18,7 +18,7 @@ export default function GlobalError({
         <div className='flex h-full w-full flex-col items-start justify-start gap-4'>
           <h2 className='text-2xl'>{error.name ?? 'Something went wrong!'}</h2>
           <p>{error.message}</p>
-          <Button color='primary' onClick={() => reset()}>
+          <Button color='primary' onPress={() => reset()}>
             Try again
           </Button>
         </div>
