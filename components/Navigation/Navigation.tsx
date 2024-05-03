@@ -1,4 +1,4 @@
-import Button from '../NextButton/Button';
+import Button from '../Button/Button';
 import { signOut } from '@/auth';
 import NavLinks from '../NavLinks/NavLinks';
 

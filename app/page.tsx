@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Button from '@/components/NextButton/Button';
+import Button from '@/components/Button/Button';
 import AppLogo from '@/components/AppLogo/AppLogo';
 
 export default function Home() {

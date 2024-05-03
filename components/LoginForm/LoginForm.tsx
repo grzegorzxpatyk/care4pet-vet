@@ -3,7 +3,7 @@
 import { authenticate } from '@/app/lib/actions';
 import { ArrowRightIcon, CrossCircledIcon } from '@radix-ui/react-icons';
 import { useFormState, useFormStatus } from 'react-dom';
-import Button from '../NextButton/Button';
+import Button from '../Button/Button';
 import InputField from '../InputField/InputField';
 
 export default function LoginForm() {

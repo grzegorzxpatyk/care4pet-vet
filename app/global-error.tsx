@@ -1,6 +1,6 @@
 'use client';
 
-import Button from '@/components/NextButton/Button';
+import Button from '@/components/Button/Button';
 import { GeistSans } from 'geist/font/sans';
 
 export default function GlobalError({

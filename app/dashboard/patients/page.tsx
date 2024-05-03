@@ -1,5 +1,5 @@
 import { fetchPatients } from '@/app/lib/data';
-import Button from '@/components/NextButton/Button';
+import Button from '@/components/Button/Button';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 

@@ -1,4 +1,4 @@
-import Button from '@/components/NextButton/Button';
+import Button from '@/components/Button/Button';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -12,7 +12,7 @@ export default function NotFound() {
       <h2 className='text-4xl'>404 - Not Found</h2>
       <p>Could not find requested resource</p>
       <Link href='/'>
-        <Button>Return Home</Button>
+        <Button color='primary'>Return Home</Button>
       </Link>
     </div>
   );

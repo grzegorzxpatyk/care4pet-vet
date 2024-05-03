@@ -1,80 +1,21 @@
-import { cva, VariantProps } from 'class-variance-authority';
-import { twMerge } from 'tailwind-merge';
+'use client';
 
-const button = cva(
-  [
-    'inline-flex',
-    'justify-center',
-    'items-center',
-    'rounded',
-    'border',
-    'border-zinc-700',
-    'transition-all',
-    'active:scale-95',
-    'font-semibold',
-    'whitespace-nowrap',
-    'disabled:cursor-not-allowed',
-  ],
-  {
-    variants: {
-      variant: {
-        primary: [
-          'bg-zinc-900',
-          'text-zinc-200',
-          'hover:enabled:bg-zinc-800',
-          'dark:bg-zinc-100',
-          'dark:text-zinc-900',
-          'dark:hover:enabled:bg-zinc-300',
-          'disabled:text-zinc-400',
-          'dark:disabled:text-zinc-700',
-        ],
-        secondary: [
-          'bg-zinc-100',
-          'dark:bg-zinc-900',
-          'text-zinc-900',
-          'dark:text-zinc-200',
-          'hover:enabled:bg-zinc-300',
-          'dark:hover:enabled:bg-zinc-800',
-          'dark:disabled:text-zinc-400',
-          'disabled:text-zinc-700',
-        ],
-        ghost: [
-          'border-none',
-          'bg-transparent',
-          'text-blue-700',
-          'hover:enabled:bg-blue-800/20',
-          'disabled:text-blue-500',
-        ],
-      },
-      size: {
-        sm: ['min-w-fit', 'h-fit', 'min-h-10', 'text-sm', 'py-1.5', 'px-4'],
-        base: ['min-w-24', 'h-fit', 'min-h-10', 'text-base', 'py-2', 'px-4'],
-        lg: ['min-w-32', 'h-fit', 'min-h-12', 'text-lg', 'py-2.5', 'px-6'],
-      },
+import { extendVariants, Button } from '@nextui-org/react';
+
+const NextButton = extendVariants(Button, {
+  variants: {
+    color: {
+      primary:
+        'font-semibold bg-zinc-900 text-zinc-200 hover:enabled:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:enabled:bg-zinc-300 disabled:text-zinc-400 dark:disabled:text-zinc-700',
+      secondary:
+        'font-semibold bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-200 hover:enabled:bg-zinc-300 dark:hover:enabled:bg-zinc-800 dark:disabled:text-zinc-400 disabled:text-zinc-700',
+      accent: 'font-semibold bg-blue-800/10 hover:bg-blue-800/30 text-blue-700',
     },
-    defaultVariants: {
-      variant: 'primary',
-      size: 'base',
-    },
-  }
-);
+  },
+  defaultVariants: {
+    color: 'primary',
+    radius: 'sm',
+  },
+});
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof button> {}
-
-export default function Button({
-  className,
-  variant,
-  size,
-  ...props
-}: ButtonProps) {
-  return (
-    <button
-      className={twMerge(button({ variant, size, className }))}
-      {...props}
-    >
-      {props.children}
-    </button>
-  );
-}
+export default NextButton;
