@@ -1,5 +1,5 @@
 import { TableName } from './data';
-import { UUID } from './types';
+import { ThemeString, UUID } from './types';
 
 export function isUUID(value: any): value is UUID {
   // Regular expression to match UUID format
@@ -21,3 +21,13 @@ export const formatBreadcrumb = async (breadcrumb: string) => {
     ? breadcrumb.split('-').join(' ')
     : breadcrumb;
 };
+
+export function isThemeString(value: any): value is ThemeString {
+  if (
+    typeof value !== 'string' ||
+    (value !== 'light' && value !== 'dark' && value !== 'system')
+  ) {
+    return false;
+  }
+  return true;
+}
