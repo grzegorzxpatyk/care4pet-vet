@@ -35,7 +35,7 @@ export default function AddButton() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const controls = useAnimation();
 
-  function handleClick() {
+  function handlePress() {
     setIsOpen(!isOpen);
   }
 
@@ -58,7 +58,7 @@ export default function AddButton() {
   return (
     <div className='fixed bottom-0 right-0'>
       <Button
-        onClick={handleClick}
+        onPress={handlePress}
         onBlur={handleBlur}
         variant='flat'
         color='accent'
