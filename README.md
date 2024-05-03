@@ -1,7 +1,9 @@
 # Care4Pet Vet
+
 Empowering Pet Care Through Seamless Communication.
 
 ## You love your pet? We too!
+
 It's an app for animal lovers made by animal lovers. The system designed to streamline health care of your dog, cat, rabbit or cow. Or a crocodile. Or a pigeon. We love them all!
 
 We take care of the data so you can focus on having a great time with your best fluffy friend!
