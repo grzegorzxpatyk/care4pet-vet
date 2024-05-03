@@ -46,3 +46,5 @@ export type HealthRecord = {
   description: string;
   medication?: string;
 };
+
+export type ThemeString = 'light' | 'dark' | 'system';
