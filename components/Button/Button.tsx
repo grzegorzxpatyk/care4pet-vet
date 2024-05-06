@@ -1,8 +1,8 @@
 'use client';
 
-import { extendVariants, Button } from '@nextui-org/react';
+import { extendVariants, Button as NextUIButton } from '@nextui-org/react';
 
-const NextButton = extendVariants(Button, {
+const Button = extendVariants(NextUIButton, {
   variants: {
     color: {
       primary:
@@ -18,4 +18,4 @@ const NextButton = extendVariants(Button, {
   },
 });
 
-export default NextButton;
+export default Button;
