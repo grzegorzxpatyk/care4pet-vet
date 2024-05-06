@@ -25,5 +25,5 @@ const Button = extendVariants(NextUIButton, {
 export default Button;
 
 export interface ButtonProps extends VariantProps<typeof Button> {
-  className?: string
-};
+  className?: string;
+}
