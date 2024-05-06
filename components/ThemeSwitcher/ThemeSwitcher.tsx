@@ -47,7 +47,12 @@ export default function ThemeSwitcher() {
       <motion.div className='theme-switch flex flex-row gap-2 rounded p-2'>
         <motion.div
           className='child'
-          initial={{ display: 'none', visibility: 'hidden' }}
+          initial={{
+            display: 'none',
+            visibility: 'hidden',
+            opacity: 0,
+            x: 144,
+          }}
         >
           <Tooltip content='Light'>
             <Button
@@ -63,7 +68,7 @@ export default function ThemeSwitcher() {
         </motion.div>
         <motion.div
           className='child'
-          initial={{ display: 'none', visibility: 'hidden' }}
+          initial={{ display: 'none', visibility: 'hidden', opacity: 0, x: 96 }}
         >
           <Tooltip content='Dark'>
             <Button
@@ -79,7 +84,7 @@ export default function ThemeSwitcher() {
         </motion.div>
         <motion.div
           className='child'
-          initial={{ display: 'none', visibility: 'hidden' }}
+          initial={{ display: 'none', visibility: 'hidden', opacity: 0, x: 48 }}
         >
           <Tooltip content='System'>
             <Button

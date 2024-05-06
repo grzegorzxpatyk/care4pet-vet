@@ -108,7 +108,7 @@ export function useThemeSwitcherAnimation(isOpen: boolean) {
       safeAnimate(
         '.theme-switch > .child:nth-of-type(1)',
         {
-          x: 96,
+          x: 144,
           opacity: 0,
         },
         {
@@ -121,7 +121,7 @@ export function useThemeSwitcherAnimation(isOpen: boolean) {
       safeAnimate(
         '.theme-switch > .child:nth-of-type(2)',
         {
-          x: 48,
+          x: 96,
           opacity: 0,
         },
         {
@@ -134,7 +134,7 @@ export function useThemeSwitcherAnimation(isOpen: boolean) {
     safeAnimate(
       '.theme-switch > .child:nth-of-type(3)',
       {
-        x: 0,
+        x: 48,
         opacity: 0,
       },
       {
