@@ -1,6 +1,6 @@
-import Button from '../Button/Button';
 import { signOut } from '@/auth';
 import NavLinks from '../NavLinks/NavLinks';
+import SubmitButton from '../SubmitButton/SubmitButton';
 
 export default function Navigation() {
   return (
@@ -13,9 +13,9 @@ export default function Navigation() {
         }}
         className='w-full'
       >
-        <Button type='submit' variant='flat' color='accent' className='w-full'>
+        <SubmitButton variant='light' color='accent' className='w-full'>
           Sign Out
-        </Button>
+        </SubmitButton>
       </form>
     </nav>
   );
