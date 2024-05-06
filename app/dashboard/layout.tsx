@@ -24,7 +24,7 @@ export default function Layout({
           <AppLogo />
         </Link>
       </div>
-      <div className='flex flex-row items-center justify-between border-b border-zinc-600 p-8 text-2xl'>
+      <div className='flex flex-row items-center justify-between border-b border-zinc-600 p-8'>
         <BreadcrumbsContainer />
         <ThemeSwitcher />
       </div>
