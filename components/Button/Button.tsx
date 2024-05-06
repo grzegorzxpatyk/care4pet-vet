@@ -1,6 +1,10 @@
 'use client';
 
-import { extendVariants, Button as NextUIButton } from '@nextui-org/react';
+import {
+  extendVariants,
+  Button as NextUIButton,
+  VariantProps,
+} from '@nextui-org/react';
 
 const Button = extendVariants(NextUIButton, {
   variants: {
@@ -19,3 +23,7 @@ const Button = extendVariants(NextUIButton, {
 });
 
 export default Button;
+
+export interface ButtonProps extends VariantProps<typeof Button> {
+  className?: string
+};
