@@ -1,6 +1,7 @@
 'use client';
 
 import { isUUID } from '@/app/lib/utils';
+import { BreadcrumbItem, Breadcrumbs } from '@nextui-org/breadcrumbs';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -10,7 +11,7 @@ type Breadcrumb = {
   url: string;
 };
 
-export default function Breadcrumbs() {
+export default function BreadcrumbsContainer() {
   const pathname = usePathname();
   const [breadcrumbArray, setBreadcrumbArray] = useState<Breadcrumb[]>([]);
 
@@ -47,15 +48,12 @@ export default function Breadcrumbs() {
   }, [pathname]);
 
   return (
-    <div className='flex flex-row items-center justify-start gap-2'>
+    <Breadcrumbs size='lg'>
       {breadcrumbArray.map((element, i) => (
-        <span key={element.url}>
-          <Link href={element.url} className='mr-2'>
-            {element.label}
-          </Link>
-          {i < breadcrumbArray.length - 1 && '>'}
-        </span>
+        <BreadcrumbItem key={element.url} href={element.url}>
+          {element.label}
+        </BreadcrumbItem>
       ))}
-    </div>
+    </Breadcrumbs>
   );
 }

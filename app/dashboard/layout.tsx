@@ -1,5 +1,5 @@
 import AppLogo from '@/components/AppLogo/AppLogo';
-import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs';
+import BreadcrumbsContainer from '@/components/Breadcrumbs/Breadcrumbs';
 import Navigation from '@/components/Navigation/Navigation';
 import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher';
 import type { Metadata } from 'next';
@@ -25,7 +25,7 @@ export default function Layout({
         </Link>
       </div>
       <div className='flex flex-row items-center justify-between border-b border-zinc-600 p-8 text-2xl'>
-        <Breadcrumbs />
+        <BreadcrumbsContainer />
         <ThemeSwitcher />
       </div>
       <div className='border-r border-zinc-600 p-8'>
