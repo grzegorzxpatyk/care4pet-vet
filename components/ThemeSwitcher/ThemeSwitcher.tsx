@@ -1,7 +1,7 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '@/components/Button/Button';
 import {
   DesktopIcon,
@@ -14,6 +14,7 @@ import type { PressEvent } from '@react-types/shared';
 import { motion } from 'framer-motion';
 import { useThemeSwitcherAnimation } from './useThemeSwitcher';
 import { Tooltip } from '@nextui-org/tooltip';
+import { ThemeSwitcherSkeleton } from '../Skeletons/Skeletons';
 
 export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
@@ -25,7 +26,7 @@ export default function ThemeSwitcher() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted) return <ThemeSwitcherSkeleton />;
 
   function handlePress(event: PressEvent) {
     const selectedTheme = event.target.getAttribute('data-value');
@@ -57,7 +58,8 @@ export default function ThemeSwitcher() {
           <Tooltip content='Light'>
             <Button
               type='button'
-              variant={theme === 'light' ? 'ghost' : 'light'}
+              variant='light'
+              color={theme === 'light' ? 'accent' : 'default'}
               data-value='light'
               onPress={handlePress}
               isIconOnly
@@ -73,7 +75,8 @@ export default function ThemeSwitcher() {
           <Tooltip content='Dark'>
             <Button
               type='button'
-              variant={theme === 'dark' ? 'ghost' : 'light'}
+              variant='light'
+              color={theme === 'dark' ? 'accent' : 'default'}
               data-value='dark'
               onPress={handlePress}
               isIconOnly
@@ -89,7 +92,8 @@ export default function ThemeSwitcher() {
           <Tooltip content='System'>
             <Button
               type='button'
-              variant={theme === 'system' ? 'ghost' : 'light'}
+              variant='light'
+              color={theme === 'system' ? 'accent' : 'default'}
               data-value='system'
               onPress={handlePress}
               isIconOnly
@@ -99,7 +103,13 @@ export default function ThemeSwitcher() {
           </Tooltip>
         </motion.div>
         <Tooltip content={isOpen ? 'Minimize' : 'Switch theme'}>
-          <Button type='button' variant='light' onPress={toggleOpen} isIconOnly>
+          <Button
+            type='button'
+            variant='shadow'
+            color='accent'
+            onPress={toggleOpen}
+            isIconOnly
+          >
             <Half2Icon />
           </Button>
         </Tooltip>

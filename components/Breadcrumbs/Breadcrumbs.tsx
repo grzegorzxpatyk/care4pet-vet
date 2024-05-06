@@ -2,9 +2,9 @@
 
 import { isUUID } from '@/app/lib/utils';
 import { BreadcrumbItem, Breadcrumbs } from '@nextui-org/breadcrumbs';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { BreadcrumbsSkeleton } from '../Skeletons/Skeletons';
 
 type Breadcrumb = {
   label: string;
@@ -14,6 +14,11 @@ type Breadcrumb = {
 export default function BreadcrumbsContainer() {
   const pathname = usePathname();
   const [breadcrumbArray, setBreadcrumbArray] = useState<Breadcrumb[]>([]);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const func = async () => {
@@ -46,6 +51,10 @@ export default function BreadcrumbsContainer() {
       setBreadcrumbArray([]);
     };
   }, [pathname]);
+
+  if (!mounted || !breadcrumbArray.length) {
+    return <BreadcrumbsSkeleton />;
+  }
 
   return (
     <Breadcrumbs size='lg'>
