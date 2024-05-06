@@ -1,7 +1,7 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '@/components/Button/Button';
 import {
   DesktopIcon,
@@ -14,6 +14,7 @@ import type { PressEvent } from '@react-types/shared';
 import { motion } from 'framer-motion';
 import { useThemeSwitcherAnimation } from './useThemeSwitcher';
 import { Tooltip } from '@nextui-org/tooltip';
+import { ThemeSwitcherSkeleton } from '../Skeletons/Skeletons';
 
 export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
@@ -25,7 +26,7 @@ export default function ThemeSwitcher() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted) return <ThemeSwitcherSkeleton />;
 
   function handlePress(event: PressEvent) {
     const selectedTheme = event.target.getAttribute('data-value');
