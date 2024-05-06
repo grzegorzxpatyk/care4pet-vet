@@ -57,7 +57,8 @@ export default function ThemeSwitcher() {
           <Tooltip content='Light'>
             <Button
               type='button'
-              variant={theme === 'light' ? 'ghost' : 'light'}
+              variant='light'
+              color={theme === 'light' ? 'accent' : 'default'}
               data-value='light'
               onPress={handlePress}
               isIconOnly
@@ -73,7 +74,8 @@ export default function ThemeSwitcher() {
           <Tooltip content='Dark'>
             <Button
               type='button'
-              variant={theme === 'dark' ? 'ghost' : 'light'}
+              variant='light'
+              color={theme === 'dark' ? 'accent' : 'default'}
               data-value='dark'
               onPress={handlePress}
               isIconOnly
@@ -89,7 +91,8 @@ export default function ThemeSwitcher() {
           <Tooltip content='System'>
             <Button
               type='button'
-              variant={theme === 'system' ? 'ghost' : 'light'}
+              variant='light'
+              color={theme === 'system' ? 'accent' : 'default'}
               data-value='system'
               onPress={handlePress}
               isIconOnly
@@ -99,7 +102,13 @@ export default function ThemeSwitcher() {
           </Tooltip>
         </motion.div>
         <Tooltip content={isOpen ? 'Minimize' : 'Switch theme'}>
-          <Button type='button' variant='light' onPress={toggleOpen} isIconOnly>
+          <Button
+            type='button'
+            variant='shadow'
+            color='accent'
+            onPress={toggleOpen}
+            isIconOnly
+          >
             <Half2Icon />
           </Button>
         </Tooltip>
