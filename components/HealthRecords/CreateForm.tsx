@@ -18,8 +18,21 @@ export default function CreateForm({
   const [selectedPatient, setPatient] = useState('');
 
   function handleSelectionChange(value: Key | null) {
-    if (!value) return;
-    setPatient(value.toString());
+    if (value === null || typeof value !== 'string') {
+      throw new TypeError(
+        'provided value to onSelectionChange event handler has incorrect type. Check implementation for details.'
+      );
+    }
+    setPatient(value);
+  }
+
+  function handleInputChange(value: Key | null) {
+    if (value === null) {
+      throw new TypeError(
+        'provided value to onInputChange event handler has incorrect type. Check implementation for details.'
+      );
+    }
+    if (value === '') setPatient('');
   }
 
   return (
@@ -50,6 +63,8 @@ export default function CreateForm({
         label='Patient'
         placeholder="Start typing patient's name"
         onSelectionChange={handleSelectionChange}
+        onInputChange={handleInputChange}
+        isRequired
       >
         {patients.map((item) => (
           <AutocompleteItem key={item.value} value={item.value}>
@@ -65,6 +80,7 @@ export default function CreateForm({
         name='pet_id'
         value={selectedPatient}
         classNames={{ base: 'hidden' }}
+        isRequired
       />
       <Textarea
         name='description'
