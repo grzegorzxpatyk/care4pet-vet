@@ -19,18 +19,20 @@ export default function CreateForm({
 
   function handleSelectionChange(value: Key | null) {
     if (value === null || typeof value !== 'string') {
-      throw new TypeError(
+      console.error(
         'provided value to onSelectionChange event handler has incorrect type. Check implementation for details.'
       );
+      return;
     }
     setPatient(value);
   }
 
   function handleInputChange(value: Key | null) {
     if (value === null) {
-      throw new TypeError(
+      console.error(
         'provided value to onInputChange event handler has incorrect type. Check implementation for details.'
       );
+      return;
     }
     if (value === '') setPatient('');
   }
