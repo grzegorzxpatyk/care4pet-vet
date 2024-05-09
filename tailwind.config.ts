@@ -4,10 +4,10 @@ import colors from 'tailwindcss/colors';
 
 const config: Config = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@nextui-org/theme/dist/components/(autocomplete|breadcrumbs|button|checkbox|input|popover|ripple|spinner|listbox|divider|scroll-shadow).js"
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './node_modules/@nextui-org/theme/dist/components/(autocomplete|breadcrumbs|button|checkbox|input|popover|ripple|spinner|listbox|divider|scroll-shadow).js',
   ],
   theme: {
     extend: {

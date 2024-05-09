@@ -4,7 +4,6 @@ import { createHealthRecord } from '@/app/lib/actions';
 import Autocomplete from '../Autocomplete/Autocomplete';
 import { Input, Textarea } from '@nextui-org/input';
 import SubmitButton from '../SubmitButton/SubmitButton';
-import { Key, useState } from 'react';
 
 export default function CreateForm({
   fullName,
