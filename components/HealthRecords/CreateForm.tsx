@@ -1,7 +1,7 @@
 'use client';
 
 import { createHealthRecord } from '@/app/lib/actions';
-import { Autocomplete, AutocompleteItem } from '@nextui-org/autocomplete';
+import Autocomplete from '../Autocomplete/Autocomplete';
 import { Input, Textarea } from '@nextui-org/input';
 import SubmitButton from '../SubmitButton/SubmitButton';
 import { Key, useState } from 'react';
@@ -54,6 +54,7 @@ export default function CreateForm({
         hidden
         aria-hidden
         isReadOnly
+        isRequired
         readOnly
         name='vet_id'
         label='Veterinarian ID'
@@ -61,27 +62,10 @@ export default function CreateForm({
         classNames={{ base: 'hidden' }}
       />
       <Autocomplete
-        name='pet_name'
+        name='pet_id'
         label='Patient'
         placeholder="Start typing patient's name"
-        onSelectionChange={handleSelectionChange}
-        onInputChange={handleInputChange}
-        isRequired
-      >
-        {patients.map((item) => (
-          <AutocompleteItem key={item.value} value={item.value}>
-            {item.label}
-          </AutocompleteItem>
-        ))}
-      </Autocomplete>
-      <Input
-        hidden
-        aria-hidden
-        isReadOnly
-        readOnly
-        name='pet_id'
-        value={selectedPatient}
-        classNames={{ base: 'hidden' }}
+        collection={patients}
         isRequired
       />
       <Textarea

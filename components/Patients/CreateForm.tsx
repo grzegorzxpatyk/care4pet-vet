@@ -26,8 +26,8 @@ export default function CreateForm({
       action={createPatient}
       className='flex w-64 min-w-fit flex-col items-start justify-start gap-4'
     >
-      <Input name='name' label='Patient Name' type='text' />
-      <Input name='age' label='Age' type='number' min={0} max={99} />
+      <Input name='name' label='Patient Name' type='text' isRequired />
+      <Input name='age' label='Age' type='number' min={0} max={99} isRequired />
       <Autocomplete
         name='species'
         label='Species'

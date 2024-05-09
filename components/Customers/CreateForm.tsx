@@ -10,9 +10,9 @@ export default function CreateForm() {
       action={createCustomer}
       className='flex w-64 min-w-fit flex-col items-start justify-start gap-4'
     >
-      <Input name='name' label='Full Name' type='text' />
-      <Input name='email' label='Email' type='email' />
-      <Input name='phoneNumber' label='Phone number' type='tel' />
+      <Input name='name' label='Full Name' type='text' isRequired />
+      <Input name='email' label='Email' type='email' isRequired />
+      <Input name='phoneNumber' label='Phone number' type='tel' isRequired />
 
       <SubmitButton>Create</SubmitButton>
     </form>
