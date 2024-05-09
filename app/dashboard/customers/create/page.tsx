@@ -1,6 +1,4 @@
-import { createCustomer } from '@/app/lib/actions';
-import InputField from '@/components/InputField/InputField';
-import SubmitButton from '@/components/SubmitButton/SubmitButton';
+import CreateForm from '@/components/Customers/CreateForm';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -8,16 +6,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return (
-    <form
-      action={createCustomer}
-      className='flex w-64 min-w-fit flex-col items-start justify-start gap-4'
-    >
-      <InputField name='name' label='Full Name' type='text' />
-      <InputField name='email' label='Email' type='email' />
-      <InputField name='phoneNumber' label='Phone number' type='tel' />
-
-      <SubmitButton>Create</SubmitButton>
-    </form>
-  );
+  return <CreateForm />;
 }
