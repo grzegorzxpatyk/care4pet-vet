@@ -15,28 +15,6 @@ export default function CreateForm({
   userId: string;
   patients: Array<{ label: string; value: string; description: string }>;
 }) {
-  const [selectedPatient, setPatient] = useState('');
-
-  function handleSelectionChange(value: Key | null) {
-    if (value === null || typeof value !== 'string') {
-      console.error(
-        'provided value to onSelectionChange event handler has incorrect type. Check implementation for details.'
-      );
-      return;
-    }
-    setPatient(value);
-  }
-
-  function handleInputChange(value: Key | null) {
-    if (value === null) {
-      console.error(
-        'provided value to onInputChange event handler has incorrect type. Check implementation for details.'
-      );
-      return;
-    }
-    if (value === '') setPatient('');
-  }
-
   return (
     <form
       action={createHealthRecord}
