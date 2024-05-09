@@ -21,7 +21,7 @@ jobs:
           LANGUAGE: English
           OPENAI_API_ENDPOINT: https://api.openai.com/v1
           MODEL: gpt-4-turbo # https://platform.openai.com/docs/models
-          PROMPT: Please check if there are any confusions or irregularities in the following code. Be so kind to mention if there are any possibile good practices or design patterns to implement. # example: Please check if there are any confusions or irregularities in the following code diff:
+          PROMPT: The Code submitted for review is a part of Next.js project using /app directory router and React.js at it's core. For styling there is used TailwindCSS along with NextUI UI library. Please check if there are any confusions or irregularities in the following code. Be so kind to mention if there are any possibile good practices or design patterns to implement. # example: Please check if there are any confusions or irregularities in the following code diff:
           top_p: 1 # https://platform.openai.com/docs/api-reference/chat/create#chat/create-top_p
           temperature: 1 # https://platform.openai.com/docs/api-reference/chat/create#chat/create-temperature
           max_tokens: 4096
