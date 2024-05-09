@@ -55,7 +55,6 @@ export default function CreateForm({
         aria-hidden
         isReadOnly
         isRequired
-        readOnly
         name='vet_id'
         label='Veterinarian ID'
         value={userId}

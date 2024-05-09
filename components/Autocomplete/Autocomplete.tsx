@@ -55,7 +55,6 @@ export default function Autocomplete({ collection, ...props }: IAutocomplete) {
         hidden
         aria-hidden
         isReadOnly
-        readOnly
         name={props.name}
         value={selectedValue}
         classNames={{ base: 'hidden' }}
