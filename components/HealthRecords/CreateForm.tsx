@@ -21,7 +21,6 @@ export default function CreateForm({
       className='flex h-full w-full flex-col items-start justify-start gap-4'
     >
       <Input
-        isReadOnly
         isDisabled
         name='vetName'
         label='Veterinarian'
